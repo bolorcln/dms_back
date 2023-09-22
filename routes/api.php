@@ -28,3 +28,11 @@ Route::group([
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::get('/user-profile', [AuthController::class, 'userProfile']);
 });
+
+Route::controller(App\Http\Controllers\GroupController::class)->prefix('groups')->group(function () {
+    Route::get('/', 'index');
+    Route::post('/', 'store');
+    Route::get('/{group}', 'show');
+    Route::put('/{group}', 'update');
+    Route::delete('/{group}', 'destroy');
+});
