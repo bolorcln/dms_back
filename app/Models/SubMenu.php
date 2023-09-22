@@ -7,19 +7,26 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Group extends Model
+class SubMenu extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
-        'description'
+        'description',
+        'order',
+        'parent_id'
     ];
 
     protected function code(): Attribute
     {
         return Attribute::make(
-            get: fn (mixed $value, array $attributes) => 'G' . Str::padLeft($attributes['id'], 3, '0')
+            get: fn (mixed $value, array $attributes) => 'T' . Str::padLeft($attributes['id'], 3, '0')
         );
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo(Menu::class, 'parent_id');
     }
 }

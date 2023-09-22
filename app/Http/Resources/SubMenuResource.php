@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class GroupResource extends JsonResource
+class SubMenuResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,6 +19,8 @@ class GroupResource extends JsonResource
             'code' => $this->code,
             'name' => $this->name,
             'description' => $this->description,
+            'order' => $this->order,
+            'parent' => new MenuResource($this->whenLoaded('parent')),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at
         ];

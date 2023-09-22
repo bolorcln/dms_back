@@ -36,3 +36,20 @@ Route::controller(App\Http\Controllers\GroupController::class)->prefix('groups')
     Route::put('/{group}', 'update');
     Route::delete('/{group}', 'destroy');
 });
+
+Route::controller(App\Http\Controllers\MenuController::class)->prefix('menus')->group(function () {
+    Route::get('/', 'index');
+    Route::post('/', 'store');
+    Route::get('/listing', 'listing');
+    Route::get('/{menu}', 'show');
+    Route::put('/{menu}', 'update');
+    Route::delete('/{menu}', 'destroy');
+});
+
+Route::controller(App\Http\Controllers\SubMenuController::class)->prefix('sub-menus')->group(function () {
+    Route::get('/', 'index');
+    Route::post('/', 'store');
+    Route::get('/{sub_menu}', 'show');
+    Route::put('/{sub_menu}', 'update');
+    Route::delete('/{sub_menu}', 'destroy');
+});
