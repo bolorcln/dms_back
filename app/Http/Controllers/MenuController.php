@@ -18,7 +18,8 @@ class MenuController extends Controller
     {
         $pageSize = $request->query('pageSize') ?? 5;
         $sortColumn = match ($request->query('sortColumn')) {
-            'id', 'name', 'description', 'order' => $request->query('sortColumn'),
+            'code' => 'id',
+            'name', 'description', 'order' => $request->query('sortColumn'),
             default => 'id'
         };
         $sortDir = match ($request->query('sortDir')) {

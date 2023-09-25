@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('position')->nullable();
             $table->string('password');
             $table->string('status');
+            $table->boolean('is_system_entry')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

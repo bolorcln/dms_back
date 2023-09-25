@@ -21,7 +21,8 @@ class UserResource extends JsonResource
             'username' => $this->username,
             'organisation' => $this->organisation,
             'position' => $this->position,
-            'status' => $this->status
+            'status' => $this->status,
+            'is_system_entry' => $this->is_system_entry
         ];
     }
 }

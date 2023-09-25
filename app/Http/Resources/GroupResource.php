@@ -19,6 +19,7 @@ class GroupResource extends JsonResource
             'code' => $this->code,
             'name' => $this->name,
             'description' => $this->description,
+            'is_system_entry' => $this->is_system_entry,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at
         ];

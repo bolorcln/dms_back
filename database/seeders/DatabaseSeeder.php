@@ -17,10 +17,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(1)->create([
+        $admin = User::factory(1)->create([
             'name' => 'Admin',
-            'username' => 'Admin',
+            'username' => 'admin',
+            'organisation' => null,
+            'position' => 'Admin',
+            'is_system_entry' => true
         ]);
+        Group::factory(1)
+            ->hasAttached($admin)
+            ->create([
+                'name' => 'Admin',
+                'is_system_entry' => true
+            ]);
+
+        // User::factory(1)->create([
+        //     'username' => 'bolorcln'
+        // ]);
+
 
         // $this->testGroupAndUsers();
         // $this->menus();

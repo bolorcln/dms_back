@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
@@ -49,7 +50,8 @@ class User extends Authenticatable implements JWTSubject
      */
     protected $casts = [
         'password' => 'hashed',
-        'status' => UserStatusEnum::class
+        'status' => UserStatusEnum::class,
+        'is_system_entry' => 'boolean'
     ];
 
     /**
@@ -79,5 +81,18 @@ class User extends Authenticatable implements JWTSubject
     public function groups(): BelongsToMany
     {
         return $this->belongsToMany(Group::class);
+    }
+
+    public function isSystemAdmin(): bool
+    {
+        return $this->id == 1;
+    }
+
+    public function isAdmin(): bool
+    {
+        return DB::table('group_user')
+            ->where('group_id', 1)
+            ->where('user_id', $this->id)
+            ->count() > 0;
     }
 }

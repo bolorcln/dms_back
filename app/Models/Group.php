@@ -17,6 +17,10 @@ class Group extends Model
         'description'
     ];
 
+    protected $casts = [
+        'is_system_entry' => 'boolean'
+    ];
+
     protected function code(): Attribute
     {
         return Attribute::make(
