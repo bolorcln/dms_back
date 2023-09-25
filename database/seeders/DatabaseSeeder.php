@@ -17,13 +17,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        User::factory(1)->create([
+            'name' => 'Admin',
+        ]);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        // $this->testGroupAndUsers();
+        // $this->menus();
+    }
 
+    protected function testGroupAndUsers()
+    {
         $users1 = User::factory(2)->create();
         Group::factory()
             ->hasAttached($users1)
@@ -37,8 +40,6 @@ class DatabaseSeeder extends Seeder
             ->create([
                 'name' => 'Intemediate Group'
             ]);
-
-        $this->menus();
     }
 
     protected function menus()
