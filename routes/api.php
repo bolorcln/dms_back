@@ -35,6 +35,9 @@ Route::controller(App\Http\Controllers\GroupController::class)->prefix('groups')
     Route::get('/{group}', 'show');
     Route::put('/{group}', 'update');
     Route::delete('/{group}', 'destroy');
+    Route::get('/{group}/users', 'users');
+    Route::post('/{group}/users', 'addUser');
+    Route::delete('/{group}/users/{user}', 'removeUser');
 });
 
 Route::controller(App\Http\Controllers\MenuController::class)->prefix('menus')->group(function () {
@@ -52,4 +55,16 @@ Route::controller(App\Http\Controllers\SubMenuController::class)->prefix('sub-me
     Route::get('/{sub_menu}', 'show');
     Route::put('/{sub_menu}', 'update');
     Route::delete('/{sub_menu}', 'destroy');
+});
+
+Route::controller(App\Http\Controllers\UserController::class)->prefix('users')->group(function () {
+    Route::get('/', 'index');
+    Route::post('/', 'store');
+    Route::get('/{user}', 'show');
+    Route::put('/{user}', 'update');
+    Route::post('/{user}/change-password', 'changePassword');
+    Route::post('/{user}/change-status', 'changeStatus');
+    Route::get('/{user}/groups', 'groups');
+    Route::post('/{user}/groups', 'addGroup');
+    Route::delete('/{user}/groups/{group}', 'removeGroup');
 });

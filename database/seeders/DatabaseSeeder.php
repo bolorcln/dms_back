@@ -4,8 +4,10 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Group;
 use App\Models\Menu;
 use App\Models\SubMenu;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,13 +24,25 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $this->call([
-            // GroupSeeder::class,
-            // MenuSeeder::class,
-            // SubMenuSeeder::class
-        ]);
+        $users1 = User::factory(2)->create();
+        Group::factory()
+            ->hasAttached($users1)
+            ->create([
+                'name' => 'Advanced Group'
+            ]);
 
-        // Menus
+        $users2 = User::factory(3)->create();
+        Group::factory()
+            ->hasAttached($users2)
+            ->create([
+                'name' => 'Intemediate Group'
+            ]);
+
+        $this->menus();
+    }
+
+    protected function menus()
+    {
         $menu1 = Menu::factory()->create([
             'name' => 'Menu 1',
             'order' => 1
@@ -57,7 +71,7 @@ class DatabaseSeeder extends Seeder
             'parent_id' => $menu2
         ]));
 
-        $menu3 = Menu::factory()->create([
+        Menu::factory()->create([
             'name' => 'C Menu 3',
             'order' => 3
         ]);

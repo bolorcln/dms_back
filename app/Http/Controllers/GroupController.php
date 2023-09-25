@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\GroupRequest;
 use App\Http\Requests\UpdateGroupRequest;
 use App\Http\Resources\GroupResource;
+use App\Http\Resources\UserResource;
 use App\Models\Group;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class GroupController extends Controller
 {
@@ -32,6 +35,30 @@ class GroupController extends Controller
             ->orderBy($sortColumn, $sortDir)
             ->paginate($pageSize);
         return GroupResource::collection($groups);
+    }
+
+    public function users(Request $request, Group $group)
+    {
+        $pageSize = $request->query('pageSize') ?? 5;
+        return UserResource::collection($group->users()->paginate($pageSize));
+    }
+
+    public function addUser(Request $request, Group $group)
+    {
+        $validated = $request->validate([
+            'user_id' => ['required', 'exists:users,id', Rule::unique('group_user', 'user_id')->where('group_id', $group->id)] 
+        ]);
+
+        $group->users()->attach($validated['user_id']);
+
+        return response()->noContent();
+    }
+
+    public function removeUser(Group $group, User $user)
+    {
+        $group->users()->detach($user);
+
+        return response()->noContent();
     }
 
     /**
