@@ -76,6 +76,23 @@ Route::group([
             Route::post('/{user}/groups', 'addGroup');
             Route::delete('/{user}/groups/{group}', 'removeGroup');
         });
+
+    Route::controller(App\Http\Controllers\ReportController::class)
+        ->prefix('reports')
+        ->group(function () {
+            Route::get('/', 'index');
+            Route::post('/', 'store');
+            Route::get('/{report}', 'show');
+            Route::put('/{report}', 'update');
+            Route::delete('/{report}', 'destroy');
+        });
+
+    Route::controller(App\Http\Controllers\TableauServerConfigController::class)
+        ->prefix('server-config')
+        ->group(function () {
+            Route::get('/', 'index');
+            Route::post('/', 'store');
+        });
 });
 
 

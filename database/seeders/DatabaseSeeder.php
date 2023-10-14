@@ -31,13 +31,12 @@ class DatabaseSeeder extends Seeder
                 'is_system_entry' => true
             ]);
 
-        // User::factory(1)->create([
-        //     'username' => 'bolorcln'
-        // ]);
 
+        $this->call([
+            ReportUploadTypeSeeder::class
+        ]);
 
-        // $this->testGroupAndUsers();
-        // $this->menus();
+        $this->menus();
     }
 
     protected function testGroupAndUsers()
