@@ -25,6 +25,7 @@ class ReportResource extends JsonResource
             'manual_data_upload_flag' => $this->manual_data_upload_flag,
             'data_source_url' => $this->data_source_url,
             'report_upload_type_id' => $this->report_upload_type_id,
+            'example_file_path' => $this->example_file_path,
             
             'support_phone' => $this->support_phone,
             'support_desktop' => $this->support_desktop,

@@ -29,6 +29,7 @@ class ReportRequest extends FormRequest
             'manual_data_upload_flag' => 'required|boolean',
             'data_source_url' => 'nullable|required_if:manual_data_upload_flag,true|string',
             'report_upload_type_id' => 'nullable|required_if:manual_data_upload_flag,true|exists:report_upload_types,id',
+            'example_file_path' => 'nullable|required_if:manual_data_upload_flag,true|string',
 
             'support_phone' => 'boolean',
             'support_desktop' => 'boolean',

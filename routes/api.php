@@ -82,6 +82,7 @@ Route::group([
         ->group(function () {
             Route::get('/', 'index');
             Route::post('/', 'store');
+            Route::post('/file', 'uploadFile');
             Route::get('/{report}', 'show');
             Route::put('/{report}', 'update');
             Route::delete('/{report}', 'destroy');

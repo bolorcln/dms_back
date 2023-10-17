@@ -7,6 +7,8 @@ use App\Http\Resources\ReportResource;
 use App\Models\Report;
 use App\Services\ReportService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use PhpOffice\PhpSpreadsheet;
 
 class ReportController extends Controller
 {
@@ -61,5 +63,18 @@ class ReportController extends Controller
     {
         $report->delete();
         return response()->noContent();
+    }
+
+    public function uploadFile(Request $request)
+    {
+        $file = $request->file('file');
+        $result = $this->service->uploadFile($file);
+        if (isset($result['error'])) {
+            return response()->json([
+                'error' => $result['error']
+            ], 422);
+        }
+
+        return response()->json($result);
     }
 }

@@ -29,7 +29,8 @@ class Report extends Model
         'height',
         'width',
         'is_interactive',
-        'is_active'
+        'is_active',
+        'example_file_path'
     ];
 
     protected $casts = [
