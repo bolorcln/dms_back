@@ -88,6 +88,13 @@ Route::group([
             Route::delete('/{report}', 'destroy');
         });
 
+    Route::controller(App\Http\Controllers\MenuPermissionController::class)
+        ->prefix('menu-permissions')
+        ->group(function () {
+            Route::get('/', 'index');
+            Route::post('/', 'store');
+        });
+
     Route::controller(App\Http\Controllers\TableauServerConfigController::class)
         ->prefix('server-config')
         ->group(function () {
