@@ -19,6 +19,7 @@ class TableauServerConfig extends Model
         'access_token',
         'pa_exp_date',
         'data_upload_connection_username',
-        'data_upload_connection_password'
+        'data_upload_connection_password',
+        'secret_id'
     ];
 }
