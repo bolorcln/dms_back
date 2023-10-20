@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TableauServerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,8 @@ Route::group([
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::get('/user-profile', [AuthController::class, 'userProfile']);
 });
+
+Route::get('/tableau/token', [TableauServerController::class, 'getJwtToken']);
 
 Route::get('/menus/listing', [App\Http\Controllers\MenuController::class, 'listing']);
 Route::group([
