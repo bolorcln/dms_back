@@ -32,6 +32,7 @@ class ReportResource extends JsonResource
             'support_tablet' => $this->support_tablet,
             'hide_tabs' => $this->hide_tabs,
             'show_toolbar' => $this->show_toolbar,
+            'toolbar' => $this->toolbar,
             'height' => $this->height,
             'width' => $this->width,
             'is_interactive' => $this->is_interactive,

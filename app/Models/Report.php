@@ -30,7 +30,8 @@ class Report extends Model
         'width',
         'is_interactive',
         'is_active',
-        'example_file_path'
+        'example_file_path',
+        'toolbar'
     ];
 
     protected $casts = [

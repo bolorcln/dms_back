@@ -36,6 +36,7 @@ class ReportRequest extends FormRequest
             'support_tablet' => 'boolean',
             'hide_tabs' => 'boolean',
             'show_toolbar' => 'boolean',
+            'toolbar' => [Rule::in(['top', 'bottom', 'hidden'])],
 
             'height' => 'nullable|integer',
             'width' => 'nullable|integer',
