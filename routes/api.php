@@ -25,7 +25,7 @@ Route::group([
     Route::get('/user-profile', [AuthController::class, 'userProfile']);
 });
 
-Route::get('/tableau/token', [TableauServerController::class, 'getJwtToken']);
+Route::get('/tableau/token', [TableauServerController::class, 'getJwtTokenV2']);
 
 Route::get('/menus/listing', [App\Http\Controllers\MenuController::class, 'listing']);
 Route::group([

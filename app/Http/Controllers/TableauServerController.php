@@ -44,4 +44,35 @@ class TableauServerController extends Controller
             'token' => $jwt
         ]);
     }
+
+    public function getJwtTokenV2()
+    {
+        $clientId = 'd65e7123-3736-4db5-8930-ef64c004531b';
+        $clientSecretId = '088ea0e7-0ea7-4228-a6e4-3672753bc269';
+        $clientSecretKey = 'AJTGKx1yIWCEdrhAf/sIZryNyHZtDoxMo2TjS7Mde0c=';
+        $userName = 'nyambaya11@gmail.com';
+
+        $payload = [
+            'iss' => $clientId,
+            'exp' => Carbon::now()->addMinutes(5)->getTimestamp(),
+            'jti' => Uuid::generate(4)->string,
+            'aud' => 'tableau',
+            'sub' => $userName,
+            'scp' => [
+                'tableau:views:embed',
+                'tableau:metrics:embed'
+            ]
+        ];
+        $headers = [
+            'typ' => 'JWT',
+            'kid' => $clientSecretId,
+            'iss' => $clientSecretId
+        ];
+
+        $jwt = JWT::encode($payload, $clientSecretKey, 'HS256', null, $headers);
+
+        return response()->json([
+            'token' => $jwt
+        ]);
+    }
 }
