@@ -66,7 +66,7 @@ class TableauServerController extends Controller
         $headers = [
             'typ' => 'JWT',
             'kid' => $clientSecretId,
-            'iss' => $clientSecretId
+            'iss' => $clientId
         ];
 
         $jwt = JWT::encode($payload, $clientSecretKey, 'HS256', null, $headers);
