@@ -96,6 +96,19 @@ Route::group([
         ->group(function () {
             Route::get('/', 'index');
             Route::post('/', 'store');
+            Route::get('/{permission}', 'show');
+            Route::put('/{permission}', 'update');
+            Route::delete('/{permission}', 'destroy');
+        });
+
+    Route::controller(App\Http\Controllers\ReportPermissionController::class)
+        ->prefix('report-permissions')
+        ->group(function () {
+            Route::get('/', 'index');
+            Route::post('/', 'store');
+            Route::get('/{reportPermission}', 'show');
+            Route::put('/{reportPermission}', 'update');
+            Route::delete('/{reportPermission}', 'destroy');
         });
 
     Route::controller(App\Http\Controllers\TableauServerConfigController::class)

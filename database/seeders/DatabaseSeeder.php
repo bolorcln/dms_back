@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Group;
 use App\Models\Menu;
+use App\Models\Report;
 use App\Models\SubMenu;
 use App\Models\User;
 use Illuminate\Database\Seeder;
