@@ -69,11 +69,11 @@ class ReportController extends Controller
     {
         $file = $request->file('file');
         $result = $this->service->uploadFile($file);
-        if (isset($result['error'])) {
-            return response()->json([
-                'error' => $result['error']
-            ], 422);
-        }
+        // if (isset($result['error'])) {
+        //     return response()->json([
+        //         'error' => $result['error']
+        //     ], 422);
+        // }
 
         return response()->json($result);
     }

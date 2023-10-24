@@ -97,16 +97,19 @@ class ReportService
   {
     $path = $file->store('temp');
 
-    $table = $this->excelFileService->loadTable(Storage::path($path), [
-      'Нэр' => 'name',
-      'Төрөл' => 'type',
-      'Утга төрөл' => 'value_type',
-      'Утгууд' => 'value'
-    ]);
+    // $table = $this->excelFileService->loadTable(Storage::path($path), [
+    //   'Нэр' => 'name',
+    //   'Төрөл' => 'type',
+    //   'Утга төрөл' => 'value_type',
+    //   'Утгууд' => 'value'
+    // ]);
 
+    // return [
+    //   'path' => $path,
+    //   'parameters' => $table
+    // ];
     return [
-      'path' => $path,
-      'parameters' => $table
+      'path' => $path
     ];
   }
 }
