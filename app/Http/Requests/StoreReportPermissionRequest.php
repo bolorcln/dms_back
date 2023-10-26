@@ -28,7 +28,7 @@ class StoreReportPermissionRequest extends FormRequest
       'report_upload_type' => ['nullable', 'required_if:manual_data_upload_flag,true', 'exists:report_upload_types,id'],
       'allow_manual_data_upload' => ['nullable', 'required_if:manual_data_upload_flag,true', 'boolean'],
 
-      'parameters' => ['required', 'array', 'min:1'],
+      'parameters' => ['array'],
       'parameters.*.id' => 'nullable|exists:report_parameters,id',
       'parameters.*.name' => 'required|string|max:255',
       'parameters.*.type' => ['required', Rule::in('multi', 'single')],

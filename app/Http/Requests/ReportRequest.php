@@ -44,7 +44,7 @@ class ReportRequest extends FormRequest
             'is_interactive' => 'boolean',
             'is_active' => 'boolean',
 
-            'parameters' => 'required|array|min:1',
+            'parameters' => 'array',
             'parameters.*.id' => 'nullable|exists:report_parameters,id',
             'parameters.*.name' => 'required|string|max:255',
             'parameters.*.type' => ['required', Rule::in('multi', 'single')],
